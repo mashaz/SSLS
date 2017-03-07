@@ -1,0 +1,44 @@
+﻿<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#button").click(function () {
+            
+            var pwd1 = $("#pwd1").val().toString();
+            var pwd2 = $("#pwd2").val().toString();
+            if (pwd1 != pwd2)
+                toast.info("两次输入密码不同！");
+            var username = $("#username").val().toString();
+            
+            $.ajax({
+                type: 'POST',
+
+                url: "/Reader/RegisterAction",
+                data: {
+                   'username':username , 'pwd': pwd1
+                },
+                success: function () {
+                    window.location.href = "/Cart/completed";
+                },
+                error: function (xmlHttpRqquest, textStatus, errorThrown) {
+                    window.location.href = "/Cart/completed";
+                }
+            });
+        });
+    });
+</script>
+<div class="panel">
+    <div class="panel-heading">
+        <h3>用户注册</h3>
+    </div>
+    <div class="panel-body">
+        <p class="lead">请输入用户名：</p>
+        <input type="text" id="username" />
+        <p class="lead">请输入密码：</p>
+        <input type="password" id="pwd1" />
+        <p class="lead"> 再次输入密码：</p>
+        <input type="password" id="pwd2" />
+
+            @Html.ActionLink("确认", "RegisterAction", null, new { @class = "btn btn-primary confirm " ,@id="button" })
+
+</div>
+</div>

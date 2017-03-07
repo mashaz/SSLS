@@ -1,0 +1,31 @@
+﻿@model SSLS.Domain.Concrete.Reader
+
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        //alert("x");
+        $("#zhuxiao").click(function () {
+            alert("已注销");
+            
+        });
+
+    }
+    )
+</script>
+<div class="navbar-text navbar-right">
+    @if (Model.Id == 0)
+    {
+        
+        @Html.ActionLink("登陆", "Login", "Reader", new { @class = "btn btn-primary" })
+        @Html.ActionLink("注册","Register","Reader","Reader",new { @class = "btn btn-primary" })
+        
+    }
+    else
+    {   
+        <b>欢迎：</b>
+        @Model.Name 
+        @Html.ActionLink("注销", "LogOut", "Reader", new { @class = "btn btn-primary" })
+        @Html.ActionLink("读者信息", "ReaderInfo", "Reader", new { @class = "btn btn-primary" })
+    }
+
+</div>

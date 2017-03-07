@@ -1,0 +1,95 @@
+﻿@model  ICollection<SSLS.Domain.Concrete.Borrow>
+
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<link href="~/Content/BookStyle.css" rel="stylesheet" />
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        var len = $('.checkbox1').length;
+        $(".return").click(function () {
+           var id = $(this).attr("id");
+            $.ajax({
+                type: 'POST',
+                url: "/Cart/returnAction",
+                data: {
+                    'id': id
+                },
+                success: function () {
+                    
+                    window.location.href="/Cart/completed";
+                },
+                error: function (xmlHttpRqquest, textStatus, errorThrown) {
+                    alert(errorThrown);
+                }
+            });
+        });
+
+        $(".continue").click(function () {
+            var id = $(this).attr("id");
+            alert(id);
+            $.ajax({
+                type: 'POST',
+
+                url: "/Cart/ContinueBorrow",
+                data: {
+                    'id': id
+                },
+                success: function () {
+                    window.location.href = "/Cart/completed";
+                },
+                error: function (xmlHttpRqquest, textStatus, errorThrown) {
+                    alert(errorThrown);
+                }
+            });
+        });
+
+    });
+
+</script>
+
+<table id="cartTable" class="table">
+    <thead>
+        <tr>
+            <th>
+            </th>
+            <th>书名</th>
+            <th>
+                借阅日期
+            </th>
+            <th>
+                状态
+            </th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                @*<input type="checkbox" class="checkbox1" />*@
+                </td>
+                <td>@item.Book.Name</td>
+                <td id="borrowdate">
+                    @item.BorrowDate
+                </td>
+                <td id="shouldReturn"> @item.ShouldReturnDate </td>
+                <td>
+                     @Html.ActionLink("立即归还", "returnAction", null, new { @class = "btn btn-primary return", @id = @item.BookId })
+                </td>
+                <td>
+                    @Html.ActionLink("续借", "ContinueBorrow", null, new { @class = "btn btn-primary continue", @id = @item.BookId })
+                </td>
+            </tr>
+        }
+
+    </tbody>
+    <tfoot>
+        <tr>
+            <td></td>
+            <td></td>
+
+            <td id="all"></td>
+        </tr>
+    </tfoot>
+</table>

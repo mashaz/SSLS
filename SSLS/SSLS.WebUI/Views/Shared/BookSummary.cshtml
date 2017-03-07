@@ -1,0 +1,24 @@
+﻿@model SSLS.Domain.Concrete.Book
+
+
+    <div class="well">
+       
+            <h2>@Model.Name</h2><span class="pull-right label label-primary">@Model.Price</span>
+            <h4>@Model.Authors</h4>
+            <p>@Model.Description</p>
+          
+      @using (Html.BeginForm("AddToCart", "Cart"))
+      {
+            
+            <div class="pull-right">
+                @Html.HiddenFor(x => x.Id)
+                @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
+                <input type="submit" class="btn btn-success" value="AddToCart" />
+            </div>
+        }
+       
+    </div>
+
+
+
+

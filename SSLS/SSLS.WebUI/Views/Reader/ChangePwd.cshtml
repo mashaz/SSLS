@@ -1,0 +1,35 @@
+﻿
+
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script type="text/javascript">
+    $(".confirm").click(function () {
+        var pwd = $("#changepwd").toString();
+        
+        $.ajax({
+            type: 'POST',
+
+            url: "/Reader/ConfirmChange",
+            data: {
+                'pwd': pwd
+            },
+            success: function () {
+               window.location.href="/Reader/ReaderInfo"
+            },
+            error: function (xmlHttpRqquest, textStatus, errorThrown) {
+                alert(errorThrown);
+            }
+        });
+    });
+</script>
+<div class="panel">
+    <div class="panel-heading">
+        <h3>更改密码</h3>
+    </div>
+    <div class="panel-body">
+        <p class="lead">请密码：</p>
+          <input type="text" id="changepwd" />
+          
+          @Html.ActionLink("确认", "ConfirmChange",null , new { @class = "btn btn-primary confirm"})
+        
+    </div>
+</div>

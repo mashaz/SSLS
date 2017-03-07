@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SSLS.Domain", "SSLS.Domain\SSLS.Domain.csproj", "{AF90060E-E732-4AB0-8A98-3CA4F280A84E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SSLS.WebUI", "SSLS.WebUI\SSLS.WebUI.csproj", "{664E5F9E-1BF2-4CB4-A4D5-6F9E55F7FBE1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AF90060E-E732-4AB0-8A98-3CA4F280A84E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF90060E-E732-4AB0-8A98-3CA4F280A84E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF90060E-E732-4AB0-8A98-3CA4F280A84E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF90060E-E732-4AB0-8A98-3CA4F280A84E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{664E5F9E-1BF2-4CB4-A4D5-6F9E55F7FBE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{664E5F9E-1BF2-4CB4-A4D5-6F9E55F7FBE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{664E5F9E-1BF2-4CB4-A4D5-6F9E55F7FBE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{664E5F9E-1BF2-4CB4-A4D5-6F9E55F7FBE1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

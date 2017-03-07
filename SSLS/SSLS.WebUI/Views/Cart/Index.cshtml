@@ -1,0 +1,68 @@
+﻿@model SSLS.WebUI.Models.CartIndexViewModel
+
+
+ <script src="~/Scripts/jquery-1.10.2.js"></script>
+<script type="text/javascript">
+    $(document).ready(function ()
+    {
+        //alert("x");
+        $("#all").click(function () {
+            if (this.checked) {
+                $(".checkbox1").attr("checked", true);
+            } else {
+                $(".checkbox1").attr("checked", false);
+            }
+        });
+ 
+    }
+    )
+</script>
+
+<style>
+    #cartTable td {
+        vertical-align: middle;
+    }
+</style>
+<h2>我的书架</h2>
+<table id="cartTable" class="table">
+    <thead>
+        <tr>
+        <th>
+            <input type="checkbox" id="all">全选
+            </th>
+        <th>书名</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var cartLine in Model.Cart.Lines)
+        {
+            <tr><td><input type="checkbox" class="checkbox1"/></td>
+                <td>@cartLine.Book.Name</td>
+                <td>
+                    @using (Html.BeginForm("RemoveFormCart", "Cart"))
+                    {
+                     
+                        @Html.Hidden("Id", cartLine.Book.Id)
+                        @Html.HiddenFor(x => x.ReturnUrl)
+                        <input class="btn btn-sm btn-warning" type="submit" value="移除" />
+                    }
+                </td>
+            </tr>
+        }
+
+    </tbody>
+    <tfoot>
+        <tr>
+            <td></td>
+            <td></td>
+         
+            <td id="all">
+            
+            </td>
+        </tr>
+    </tfoot>
+</table>
+<div class="text-center">
+    <a class="btn btn-primary" href="@Model.ReturnUrl">继续阅览 </a>
+    @Html.ActionLink("立即借阅", "Checkout", null, new { @class = "btn btn-primary" })
+</div>

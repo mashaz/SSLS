@@ -1,0 +1,15 @@
+﻿@model  SSLS.WebUI.Models.BooksListViewModel
+
+@{
+    ViewBag.Title = "Library";
+}
+<div id="returnBook">@Html.Action("Summary", "Cart")</div>
+@foreach (var p in Model.Books)
+{
+   @Html.Partial("BookSummary",p)
+}
+    <div class="btn-group pull-right">
+        @Html.PageLinks(Model.pagingInfo, x => Url.Action("List", new { categoryId = Model.CurrentCategoryId, Page = x }))
+    </div>
+
+    

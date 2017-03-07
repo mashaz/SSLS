@@ -1,0 +1,11 @@
+﻿@model IEnumerable<SSLS.Domain.Concrete.Category>
+
+@Html.ActionLink("主页", "List", "Book", null, new { @class = "btn btn-block btn-primary btn-lg" })
+
+@foreach (var category in Model)
+{
+    @Html.RouteLink(category.Name,
+    new { Controller = "Book", Action = "List", categoryId = category.Id, Page = 1 },
+            new { @class = "btn btn-block btn-primary btn-lg" + (category.Id == ViewBag.CurrentCategoryId ? "btn-primary" : "") }
+    )
+}

@@ -1,0 +1,51 @@
+﻿@model SSLS.Domain.Concrete.Reader
+
+@{
+    ViewBag.Title = "CreateReader";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<script type="text/javascript">
+
+</script>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3>添加读者</h3>
+    </div>
+    @using (Html.BeginForm("CreateReader", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+
+        <div class="panel-body">
+            <div class="form-horizontal">
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.Id)
+
+                <div class="form-group">
+                    <label class="control-label col-md-2" for="Name">用户名</label>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2" for="Name">密码</label>
+
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Password , "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel-footer">
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="保存" class="btn btn-default" />
+                    @Html.ActionLink("返回列表", "Index")
+                </div>
+            </div>
+        </div>
+    }
+
+</div>

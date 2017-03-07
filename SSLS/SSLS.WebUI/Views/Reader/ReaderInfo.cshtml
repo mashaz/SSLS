@@ -1,0 +1,50 @@
+﻿@model  SSLS.Domain.Concrete.Reader
+
+<table id="cartTable" class="table">
+    <thead>
+        <tr>
+            <th>
+            </th>
+            <th>姓名</th>
+            <th>编号</th>
+            <th>邮箱</th>
+            <th> 余额 </th>
+            <th>  </th>
+            <th> </th>
+        </tr>
+    </thead>
+    <tbody>
+      
+            <tr>
+                <td></td>
+
+                <td id="username">@Model.Name</td>
+                <td id="userid">@Model.Id</td>
+                <td id="email">@Model.Email</td>
+                <td id="balance">
+                 @Model.Balance
+                </td>
+                <td id="shouldReturn">
+                    
+                </td>
+                <td>
+
+                    @Html.ActionLink("修改密码", "changePwd", "Reader",
+                new { @class = "btn btn-default navbar-btn" })
+                </td>
+                <td>
+                   @Html.ActionLink("充值", "Recharge", "Reader",
+                new { @class = "btn btn-default navbar-btn" })
+                </td>
+   </tr>
+         
+    </tbody>
+    <tfoot>
+        <tr>
+            <td></td>
+            <td></td>
+
+            <td id="all"></td>
+        </tr>
+    </tfoot>
+</table>

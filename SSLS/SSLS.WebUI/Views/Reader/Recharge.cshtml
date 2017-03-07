@@ -1,0 +1,37 @@
+﻿<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#button").click(function () {
+
+            var money = $("#money").val().toString();
+
+            $.ajax({
+                type: 'POST',
+
+                url: "/Reader/RechargeAction",
+                data: {
+                    'money': money
+                },
+                success: function () {
+                    window.location.href = "/Reader/ReaderInfo";
+                },
+                error: function (xmlHttpRqquest, textStatus, errorThrown) {
+                    window.location.href = "/Reader/ReaderInfo";
+                }
+            });
+        });
+    });
+</script>
+<div class="panel">
+    <div class="panel-heading">
+        <h3>用户注册</h3>
+    </div>
+    <div class="panel-body">
+        <p class="lead">请输入充值金额：</p>
+        <input type="text" id="money" />
+      
+
+        @Html.ActionLink("确认充值", "RechargeAction", null, new { @class = "btn btn-primary confirm ", @id = "button" })
+
+    </div>
+</div>

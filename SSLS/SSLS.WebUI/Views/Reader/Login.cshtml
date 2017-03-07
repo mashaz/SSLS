@@ -1,0 +1,64 @@
+﻿@model SSLS.Domain.Concrete.Reader
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script type="text/javascript">
+
+    //$(document).ready(function () {
+
+        
+    //    $("#submit").click(function () {
+    //        var admin = $("#admin").is(':checked');
+    //        alert(id);
+    //        $.ajax({
+    //            type: 'POST',
+
+    //            url: "/Reader/Login",
+    //            data: {
+    //                'admin': admin
+    //            },
+    //            success: function () {
+    //                alert("ok");
+    //            },
+    //            error: function (xmlHttpRqquest, textStatus, errorThrown) {
+    //                alert(errorThrown);
+    //            }
+    //        });
+    //    });
+
+
+    //});
+
+
+
+</script>
+<div class="panel">
+    <div class="panel-heading">
+        <h3>读者登录</h3>
+    </div>
+    <div class="panel-body">
+        <p class="lead">请输入帐号密码：</p>
+        @using (Html.BeginForm())
+        {
+            @Html.ValidationSummary()
+            <div class="form-group">
+                <label>帐号</label>
+                @Html.TextBoxFor(c => c.Id, new { @class = "form-control" })
+
+            </div>
+            <div class="form-group">
+                <label>密码</label>
+                @Html.PasswordFor(c => c.Password, new { @class = "form-control" })
+            </div>
+       
+           @*<input type="checkbox" id="admin" />*@
+                                                    
+            <input type="submit" id="submit" value="读者登录" class="btn btn-primary" />
+          @Html.ActionLink("管理员登录", "Index","Admin", "Admin",
+                new { @class = "btn btn-default navbar-btn" })
+
+        }
+    </div>
+</div>

@@ -1,0 +1,44 @@
+﻿@model IEnumerable<SSLS.Domain.Concrete.Book>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="panel panel-default">
+    <div class="panel-heading"><h2>图书列表</h2></div>
+    <div class="panel-body">
+        <table class="table table-striped table-condensed table-bordered">
+            <tr>
+                <th class="text-right">编号</th>
+                <th>名称</th>
+                <th>分类</th>
+         
+                <th></th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td class="text-right">@item.Id</td>
+                    <td> @Html.ActionLink(item.Name, "Edit", new { item.Id }) </td>
+
+                    <td>@item.Category.Name</td>
+
+          
+                    <td class="text-center">
+                        @Html.Hidden("Id", item.Id)
+                        <input type="submit" class="btn btn-default btn-xs" value="删除" />
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+    <div class="panel-footer">
+        @Html.ActionLink("新增", "Create", null, new { @class = "btn btn-default" })
+    </div>
+    <div class="panel-footer">
+        @Html.ActionLink("读者管理", "ReaderManage", null, new { @class = "btn btn-default" })
+    </div>
+    <div class="panel-footer">
+        @Html.ActionLink("类别编辑", "EditCategory", null, new { @class = "btn btn-default" })
+    </div>
+</div>
